@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\employee;
+use Faker\Provider\UserAgent;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Foundation\Auth\User;
 //Ovo je potrebno dodati na početku!! inače ne radi DB...
 use Illuminate\Support\Facades\DB;
 
@@ -77,5 +79,34 @@ class DatabaseSeeder extends Seeder
         DB::table('employments')->insert ($employments);
 
         // \App\Models\User::factory(10)->create();
+
+        /*#################################################################################################################### */
+        /*###############                                 Seed velikih kolicina podataka                        ############## */
+        /*#################################################################################################################### */
+        employee::factory()
+            ->count(env('SEED_EMPLOYEE',7))
+            ->create();
+/*
+        department::factory()
+            ->count(env('SEED_DEPARTMENT',7))
+            ->create();
+        
+        employment::factory()
+            ->count(env('SEED_EMPLOYMENT',7))
+            ->create();
+
+        group_member::factory()
+            ->count(env('SEED_GROUP_MEMBER',7))
+            ->create();
+
+        group1::factory()
+            ->count(env('SEED_GROUP1',7))
+            ->create();
+
+        user::factory()
+            ->count(env('SEED_USER',7))
+            ->create();
+*/
+
     }
 }

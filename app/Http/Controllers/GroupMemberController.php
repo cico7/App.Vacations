@@ -83,5 +83,7 @@ class GroupMemberController extends Controller
     public function destroy(group_member $group_member)
     {
         //
+        $group_member->delete();
+        return redirect()->back()->with('Sucsses','Successfully Deleted!');
     }
 }

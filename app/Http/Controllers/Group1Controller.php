@@ -83,5 +83,7 @@ class Group1Controller extends Controller
     public function destroy(group1 $group1)
     {
         //
+        $group1->delete();
+        return redirect()->back();
     }
 }

@@ -82,6 +82,8 @@ class DepartmentController extends Controller
      */
     public function destroy(department $department)
     {
-        //
+        $department->delete();
+        return redirect()->back();
     }
 }
+    

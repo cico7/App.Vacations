@@ -83,5 +83,7 @@ class EmploymentController extends Controller
     public function destroy(employment $employment)
     {
         //
+        $employment->delete();
+        return redirect()->back();
     }
 }
