@@ -15,8 +15,11 @@ class CreateGroupsMembersTable extends Migration
     {
         Schema::create('groups_members', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('group_id')->constrained('groups1');
+            //nullable mora biti prije constrained, a onDelete() nakon constraind-a
+            //onDelete ima dvije opcije-----1. je set null i ona trazi da mora biti nullable
+            //                              2. je cascade i ona brise taj red
+            $table->foreignId('user_id') ->constrained('users','id')    ->onDelete('cascade');
+            $table->foreignId('group_id')->constrained('groups1','id')  ->onDelete('cascade');
             $table->timestamps();
         });
     }

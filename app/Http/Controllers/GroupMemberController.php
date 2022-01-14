@@ -84,6 +84,7 @@ class GroupMemberController extends Controller
     {
         //
         $group_member->delete();
-        return redirect()->back()->with('Sucsses','Successfully Deleted!');
+        return redirect()->back()->with('Successfully Deleted!');
+        
     }
 }

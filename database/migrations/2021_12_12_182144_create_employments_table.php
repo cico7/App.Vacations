@@ -15,8 +15,8 @@ class CreateEmploymentsTable extends Migration
     {
         Schema::create('employments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id')->constrained('employees');
-            $table->foreignId('department_id')->constrained('departments');
+            $table->foreignId('employee_id')->constrained('employees','id')     ->onDelete('cascade');
+            $table->foreignId('department_id')->constrained('departments','id') ->onDelete('cascade');
             $table->date('employee_hire_date');
             $table->date('employee_termination_date')->nullable();
             $table->timestamps();

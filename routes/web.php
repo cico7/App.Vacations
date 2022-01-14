@@ -1,6 +1,12 @@
     <?php
 
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmploymentController;
+use App\Http\Controllers\Group1Controller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\GroupMemberController;
 use App\Models\department;
 use Illuminate\Support\Facades\Route;
 
@@ -24,12 +30,12 @@ route::get('/department/delete/{department}', [DepartmentController::class, 'des
 
 /* Employees */
 route::get  ('/employee'      , 'App\\Http\\Controllers\\EmployeeController@index'    )->name('employee.index');
-route::get('/group1/delete/{employee}', [EmployeeController::class, 'destroy'])
+route::get('/employee/delete/{employee}', [EmployeeController::class, 'destroy'])
     ->name ('employee.destroy');
 
 /*Employments */
 route::get  ('/employment'    , 'App\\Http\\Controllers\\EmploymentController@index'  )->name('employment.index');
-route::get('/group1/delete/{employment}', [EmploymentController::class, 'destroy'])
+route::get('/employment/delete/{employment}', [EmploymentController::class, 'destroy'])
     ->name ('employment.destroy');
 
 /*Groups*/
@@ -39,13 +45,12 @@ route::get('/group1/delete/{group1}', [Group1Controller::class, 'destroy'])
 
 /*Group_members */    
 route::get  ('/group_member'  , 'App\\Http\\Controllers\\GroupMemberController@index' )->name('group_member.index');
-route::get('/group1/delete/{group_member}', [GroupMemberController::class, 'destroy'])
+route::get('/group_member/delete/{group_member}', [GroupMemberController::class, 'destroy'])
     ->name ('group_member.destroy');
 
 /* Users*/
-route::get  ('/user'          , 'App\\Http\\Controllers\\UserController@index'        )->name('user.index');
-route::get('/group1/delete/{user}', [userController::class, 'destroy'])
-    ->name ('user.destroy');
+route::get  ('/user'          ,     [UserController::class, 'index']          )         ->name('user.index');
+route::get('/user/delete/{user}',   [UserController::class, 'destroy'])                 ->name ('user.destroy');
 
 /*############################################################################################################################*/ 
 route::post ('/department'    , 'App\\Http\\Controllers\\DepartmentController@store' )->name('department.store');

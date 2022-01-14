@@ -61,10 +61,10 @@ class DatabaseSeeder extends Seeder
 
         $departments = 
         [
-            ['user_id' => 4, 'department_name' => 'department'    , 'department_desription' => 'BBO department................'],
-            ['user_id' => 2, 'department_name' => 'KADROVSKA'     , 'department_desription' => 'kadrovska.................'],
-            ['user_id' => 3, 'department_name' => 'FINANCIJE'     , 'department_desription' => 'financije...............'],
-            ['user_id' => 1, 'department_name' => 'Odjel'         , 'department_desription' => 'odjel................................']
+            ['manager_id' => 4, 'department_name' => 'department'    , 'department_desription' => 'BBO department................'],
+            ['manager_id' => 2, 'department_name' => 'KADROVSKA'     , 'department_desription' => 'kadrovska.................'],
+            ['manager_id' => 3, 'department_name' => 'FINANCIJE'     , 'department_desription' => 'financije...............'],
+            ['manager_id' => 1, 'department_name' => 'Odjel'         , 'department_desription' => 'odjel................................']
         ];
         DB::table('departments')->insert ($departments);
 
