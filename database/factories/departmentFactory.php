@@ -15,8 +15,8 @@ class departmentFactory extends Factory
     {
         return [
             //
-            'user_id'=>$this->faker->userName,
-            'department_name'=>$this->faker->domainWord              ,
+            'manager_id'=>rand(1,3),
+            'department_name'=>$this->faker->domainWord,
             'department_desription'=>$this->faker->slug
         ];
     }

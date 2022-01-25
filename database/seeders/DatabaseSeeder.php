@@ -3,9 +3,15 @@
 namespace Database\Seeders;
 
 use App\Models\employee;
+use App\Models\User;
+use App\Models\department;
+use App\Models\employment;
+use App\Models\group1;
+use App\Models\group_member;
 use Faker\Provider\UserAgent;
 use Illuminate\Database\Seeder;
-use Illuminate\Foundation\Auth\User;
+//use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Hash;
 //Ovo je potrebno dodati na početku!! inače ne radi DB...
 use Illuminate\Support\Facades\DB;
 
@@ -21,12 +27,21 @@ class DatabaseSeeder extends Seeder
         
         $users = 
         [
-            ['user_log_in' => 'deri', 'user_name' => 'Damir Eri'],
-            ['user_log_in' => 'mklaric', 'user_name' => 'Marijan Klarić'],
-            ['user_log_in' => 'Lpopovic', 'user_name' => 'Laura Popović'],
-            ['user_log_in' => 'mprebeg', 'user_name' => 'Marko Prebeg']
+            ['user_log_in' => 'deri', 'user_name' => 'Damir Eri', 'email' => 'deri@vvg.hr','password' => Hash::make('password')],
+            ['user_log_in' => 'mklaric', 'user_name' => 'Marijan Klarić', 'email' => 'marijan@vvg.hr','password' => Hash::make('password')],
+            ['user_log_in' => 'Lpopovic', 'user_name' => 'Laura Popović', 'email' => 'lpopoc@vvg.hr','password' => Hash::make('password')],
+            ['user_log_in' => 'mprebeg', 'user_name' => 'Marko Prebeg', 'email' => 'marko@vvg.hr','password' => Hash::make('password')]
         ];
         DB::table('users')->insert ($users);
+
+        User::factory()
+            ->count(env('SEED_USER', 5))
+            ->create();
+
+        User::factory()->create([
+            'email' => 'admin@admin.com'
+        ]);
+
 
 
         $employees = 
@@ -86,11 +101,11 @@ class DatabaseSeeder extends Seeder
         employee::factory()
             ->count(env('SEED_EMPLOYEE',7))
             ->create();
-/*
+
         department::factory()
             ->count(env('SEED_DEPARTMENT',7))
             ->create();
-        
+       /*
         employment::factory()
             ->count(env('SEED_EMPLOYMENT',7))
             ->create();
@@ -98,15 +113,10 @@ class DatabaseSeeder extends Seeder
         group_member::factory()
             ->count(env('SEED_GROUP_MEMBER',7))
             ->create();
-
+        */
         group1::factory()
             ->count(env('SEED_GROUP1',7))
             ->create();
-
-        user::factory()
-            ->count(env('SEED_USER',7))
-            ->create();
-*/
 
     }
 }

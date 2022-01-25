@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('user_log_in',255);
             $table->string('user_name',50);
+            $table->string('email')->unique();
+            $table->string('password');
             /*created_at updated_at*/
             $table->timestamps();
         });

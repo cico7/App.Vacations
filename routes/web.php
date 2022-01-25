@@ -1,5 +1,6 @@
     <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmploymentController;
@@ -59,3 +60,12 @@ route::post ('/employment'    , 'App\\Http\\Controllers\\EmploymentController@st
 route::post ('/group1'        , 'App\\Http\\Controllers\\Group1Controller@store'     )->name('group1.store');
 route::post ('/group_member'  , 'App\\Http\\Controllers\\GroupMemberController@store')->name('group_member.store');
 route::post ('/user'          , 'App\\Http\\Controllers\\UserController@store'       )->name('user.store');
+
+/* authorization */
+Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('/login', [AuthController::class, 'attemptLogin'])->name('auth.attempt_login');
+
+Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('/register', [AuthController::class, 'attemptRegister'])->name('auth.attempt_register'); 
